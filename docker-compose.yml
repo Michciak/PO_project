@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  app:
+    build: ./web-app
+    depends_on:
+      - "db"
+    ports:
+      - "5001:5000"
+    networks:
+      - my_network
+
+  model:
+    build: ./model
+    ports:
+      - "8001:5000"
+    networks:
+      - my_network
+
+  db:
+    build: ./database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: zxcvbnm
+      MYSQL_DATABASE: cars_db
+      MYSQL_USER: my_user
+      MYSQL_PASSWORD: my_password
+      READ_ONLY: OFF
+    networks:
+      - my_network
+    volumes:
+      - db_cars:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-p", "zxcvbnm" ]
+      retries: 3
+      timeout: 5s
+
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  db_cars:
