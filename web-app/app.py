@@ -144,9 +144,12 @@ try:
             else:
                 use_new_data = False
 
-
 except Exception as e:
     st.write(str(e))
+
+if not st.session_state.get('init_reload'):
+    st.session_state.init_reload = True
+    st.rerun()
 
 
 
