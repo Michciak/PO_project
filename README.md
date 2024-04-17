@@ -39,7 +39,7 @@ In few steps I will describe process how run software by yourself.
 To install this software and be able to run it you need to previously install Docker on your machine. If you don't have Docker you can download it from official distribution: [docker.com](<https://www.docker.com/products/docker-desktop/>).
 
 ### Installing application
-After you clone repository you need to run system terminal and go to directory 'Projekt' which contains all files.
+After you clone repository you need to run system terminal and go to directory 'PO_project' which contains all files.
 
 Next you need to set up application by building container, to achieve this run command 'docker compose up -d'.
 
