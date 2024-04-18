@@ -1,7 +1,10 @@
+# create database if there is no existing one
 CREATE DATABASE IF NOT EXISTS cars_db;
 
+# use created database
 USE cars_db;
 
+# create table for data
 CREATE TABLE IF NOT EXISTS used_cars (
     ID INT,
     Brand VARCHAR(255) NOT NULL,
@@ -16,6 +19,7 @@ CREATE TABLE IF NOT EXISTS used_cars (
     Price INT NOT NULL
 );
 
+# load data from csv file
 LOAD DATA INFILE '/var/lib/mysql-files//dataset.csv'
 INTO TABLE used_cars
 FIELDS TERMINATED BY ','
