@@ -43,7 +43,9 @@ After you clone repository you need to run system terminal and go to directory '
 
 Next you need to set up application by building container, to achieve this run command 
 
-```docker compose up -d```
+```
+docker compose up -d
+```
 
 ### Running application
 Finally, you should be able to use application by going to <http://localhost:5001/>
