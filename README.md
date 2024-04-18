@@ -41,7 +41,7 @@ To install this software and be able to run it you need to previously install Do
 ### Installing application
 After you clone repository you need to run system terminal and go to directory 'PO_project' which contains all files.
 
-Next you need to set up application by building container, to achieve this run command 'docker compose up -d'.
+Next you need to set up application by building container, to achieve this run command ```docker compose up -d```.
 
 ### Running application
 Finally, you should be able to use application by going to <http://localhost:5001/>
