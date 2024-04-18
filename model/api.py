@@ -5,8 +5,10 @@ from model import *
 import pandas as pd
 import sqlalchemy
 
+# init fastapi
 app = FastAPI()
 
+# create structure of data for prediction
 class Car(BaseModel):
     brand: str
     model: str
@@ -18,16 +20,20 @@ class Car(BaseModel):
     accident: str
     clean_title: str
 
+# init model class
 model = Model()
 
+# api post for prediction
 @app.post("/predict")
 async def run_prediction(car: Car, og_mode: bool):
     lower, upper = model.predict(car.dict(), og_mode)
     return json.dumps({'lower': lower, 'upper': upper})
 
+# api get for model fitted on new data
 @app.get("/train")
 async def train_model():
     try:
+        # connect to database to get new data
         database_name = "cars_db"
         user_name = "my_user"
         password = "my_password"
@@ -46,4 +52,5 @@ async def train_model():
             df = pd.read_sql(query, engine)
         except:
             raise Exception('Can\'t connect to database')
+    # fit model with new data
     model.fit_model(df)

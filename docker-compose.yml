@@ -1,43 +1,59 @@
+# docker version
 version: '3'
 
+# define microservices
 services:
+  # web-app microservice
   app:
     build: ./web-app
+    # wait for initialization of database before setting up
     depends_on:
       - "db"
+    # map container port 5000 to port 5001 of machine
     ports:
       - "5001:5000"
+    # use local docker network
     networks:
       - my_network
 
   model:
+    # model/api microservice
     build: ./model
+    # map container port 5000 to port 5001 of machine
     ports:
       - "8001:5000"
+    # use local docker network
     networks:
       - my_network
 
   db:
+    # database microservice
     build: ./database
     restart: always
+    # set up environment variables
     environment:
       MYSQL_ROOT_PASSWORD: zxcvbnm
       MYSQL_DATABASE: cars_db
       MYSQL_USER: my_user
       MYSQL_PASSWORD: my_password
       READ_ONLY: OFF
+    # use local docker network
     networks:
       - my_network
+    # use local docker volume
     volumes:
       - db_cars:/var/lib/mysql
+    # run test to be sure database initialization was successful
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-p", "zxcvbnm" ]
       retries: 3
       timeout: 5s
 
+# define local docker network
 networks:
   my_network:
     driver: bridge
 
+# define local docker volume
 volumes:
   db_cars:
