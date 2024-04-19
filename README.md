@@ -41,11 +41,11 @@ This service is responsible for providing database functionality. Its architectu
 
 ### Web-app UI
 
-This service is responsible for the visual interface of the application. It allows the user to use the API and the functionalities described above. It is based on the *Streamlit* framework.
+This service is responsible for the visual interface of the application. It allows the user to use the API and the described functionalities. It is based on the *Streamlit* framework.
 
 ### API 
 
-This service is responsible for handling the machine learning model and provides functionalities like making predictions fitting the model using new data provided by user, for this purpose it also has the ability to communicate with the database. Its architecture is based on *FastAPI*.
+This service is responsible for handling the machine learning model and provides functionalities like making predictions and fitting the model using new data provided by user, for this purpose it also has the ability to communicate with the database. Its architecture is based on *FastAPI*.
 ___
 
 ## Setup guide
