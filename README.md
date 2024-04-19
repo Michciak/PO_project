@@ -3,8 +3,9 @@
 ## Table of Contents
 1. Introduction
 2. Technologies
-3. Setup
-4. Visual presentation
+3. Microserivcies description
+4. Setup guide
+5. Visual presentation
 
 ___
 
@@ -32,7 +33,22 @@ This project was created with:
 
 ___
 
-## Setup
+## Microserivcies description
+
+### Database server
+
+This service is responsible for providing database functionality. Its architecture is based on the *MySQL* server.
+
+### Web-app UI
+
+This service is responsible for the visual interface of the application. It allows the user to use the API and the functionalities described above. It is based on the *Streamlit* framework.
+
+### API 
+
+This service is responsible for handling the machine learning model and provides functionalities like making predictions fitting the model using new data provided by user, for this purpose it also has the ability to communicate with the database. Its architecture is based on *FastAPI*.
+___
+
+## Setup guide
 In few steps I will describe process how run software by yourself.
 
 ### Prerequisites
